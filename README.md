@@ -8,7 +8,7 @@ Il prend une URL, parcourt les pages, extrait les infos avec des sélecteurs CSS
 
 Clone le projet et installe les dépendances :
 
-git clone https://github.com/ton-pseudo/scraperuwu.git
+git clone https://github.com/wKrns/scraperuwu.git
 cd scraperuwu
 pip install -r requirements.txt
 
