@@ -9,7 +9,9 @@ Il prend une URL, parcourt les pages, extrait les infos avec des sélecteurs CSS
 Clone le projet et installe les dépendances :
 
 git clone https://github.com/wKrns/scraperuwu.git
+
 cd scraperuwu
+
 pip install -r requirements.txt
 
 
@@ -43,3 +45,7 @@ Les fichiers sont enregistrés dans :
 output/
  └── example.com/
      └── results.jsonl
+
+
+# Discord : .krns 
+feel free too add 
