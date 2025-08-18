@@ -43,8 +43,11 @@ Les fichiers sont enregistrés dans :
 # Exemple :
 
 output/
+
  └── example.com/
+ 
      └── results.jsonl
+     
 
 
 # Discord : .krns 
