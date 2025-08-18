@@ -54,7 +54,7 @@ def normalize_url(base, href):
     if not href:
         return None
     href = href.strip()
-    # ignore anchors/mailto/tel/javascript
+    # ignore anchors/mailto/tel/javascript mais je vais le rework 
     if href.startswith(("#", "mailto:", "tel:", "javascript:")):
         return None
     return up.urljoin(base, href)
@@ -126,13 +126,12 @@ def scrape_seed(seed_url, selectors, session, crawl=False, link_css="a", link_pa
             tqdm.write(f"[warn] {url} -> {e}")
             continue
 
-        soup = BeautifulSoup(r.text, "html.parser")  # parser intégré à Python
+        soup = BeautifulSoup(r.text, "html.parser")  # parser tah les ouf 1337 H4CK3UR W3B
         row = {"url": url}
         row.update(extract_with_selectors(soup, selectors))
         out.append(row)
         pbar.update(1)
 
-        # Pagination (ex: bouton "Next")
         if follow_pagination_css:
             nxt = soup.select_one(follow_pagination_css)
             if nxt and nxt.get("href"):
@@ -140,7 +139,6 @@ def scrape_seed(seed_url, selectors, session, crawl=False, link_css="a", link_pa
                 if nxt_url and nxt_url not in seen:
                     queue.append(nxt_url)
 
-        # Crawl interne
         if crawl:
             for a in soup.select(link_css):
                 href = normalize_url(url, a.get("href"))
@@ -172,11 +170,11 @@ def main():
     ap.add_argument("--out", default=None, help="sortie (.jsonl ou .csv)")
     args = ap.parse_args()
 
-    # si pas d’URL en argument → demande à l’utilisateur
+    # si pas d’URL en argument → demande à l’utilisateur → VA TE FAIRE 
     if not args.url:
         args.url = input("👉 Entre l’URL Tocard W3B : ").strip()
 
-    # charge sélecteurs par défaut
+    # charge sélecteurs par défaut ou Négro
     if not args.selectors:
         selectors = {
             "title": {"css": "title"},
@@ -203,12 +201,12 @@ def main():
         follow_pagination_css=args.pagination_css
     )
 
-    # crée dossier de sortie basé sur domaine
+    # crée dossier de sortie basé sur domaine ( le blaze du domaine connard )
     domain = up.urlparse(args.url).netloc.replace(":", "_")
     out_dir = Path("output") / domain
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # fichier de sortie (par défaut JSONL)
+    # fichier de sortie (par défaut JSONL jsp comment faire autrement )
     if args.out:
         out_file = Path(args.out)
     else:
@@ -228,4 +226,4 @@ if __name__ == "__main__":
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        print("\n👋 Bye.")
+        print("\n👋 Bye. my NIGGA ")
